@@ -11,8 +11,8 @@ const Header = (props) => {
 }
 
 const Part = (props) => {
-  const receivedPart = props.part; 
- return (
+  const receivedPart = props.part;
+  return (
     <div>
       {receivedPart.title} {receivedPart.exerciseCount}
     </div>
@@ -24,28 +24,28 @@ const Content = (props) => {
   console.log("is it shtg in allParts?" + allParts);
   console.log("exercise? " + allParts[0].exerciseCount);
   console.log("exercise? " + allParts[0].title);
-  
+
   return (
-    
-     <div>
-       <Part part={allParts[0]} />
-       <Part part={allParts[1]} />
-       <Part part={allParts[2]} />
-     </div>
-   )
- }
+
+    <div>
+      <Part part={allParts[0]} />
+      <Part part={allParts[1]} />
+      <Part part={allParts[2]} />
+    </div>
+  )
+}
 
 const Total = (props) => {
   const allParts = props.parts;
   const exerciseOfPart1 = allParts[0].exerciseCount;
   const exerciseOfPart2 = allParts[0].exerciseCount;
   const exerciseOfPart3 = allParts[0].exerciseCount;
-  
-  const totalExercises= exerciseOfPart1 + exerciseOfPart2 + exerciseOfPart3;
-  
+
+  const totalExercises = exerciseOfPart1 + exerciseOfPart2 + exerciseOfPart3;
+
   return (
     <p>
-  Total {totalExercises}
+      Total {totalExercises}
     </p>
   )
 }
@@ -71,17 +71,17 @@ const App = () => {
   }
 
 
-let totalexerciseCount = 0;
+  let totalexerciseCount = 0;
 
-return (
-  <div>
+  return (
     <div>
-      <Header name={course.name} />
-      <Content contentsParts={course.parts} />
-      <Total parts={course.parts} />
+      <div>
+        <Header name={course.name} />
+        <Content contentsParts={course.parts} />
+        <Total parts={course.parts} />
+      </div>
     </div>
-  </div>
-)
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'));
