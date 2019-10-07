@@ -12,32 +12,38 @@ const App = (props) => {
   const [bad, setBad] = useState(0)
 
 
-
-  const handleClick = () => {
-    console.log('clicked')
+  const handleGoodClick = () => {
+    setGood(good + 1)
+  }
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1)
+  }
+  const handleBadClick = () => {
+    setBad(bad + 1)
   }
 
-  
- 
+
 
   return (
     <div>
       <h1>Give Feedback</h1>
-      <div>{good}</div>
-      <button onClick={() => console.log('clicked')}>
-        good
-      </button>
-      <div>{neutral}</div>
-      <button onClick={() => console.log('clicked')}>
-        neutral
-      </button>
+    <div>
+        <button onClick={handleGoodClick}>good</button>
+        <button onClick={handleNeutralClick}>neutral</button>
+        <button onClick={handleBadClick}>bad</button>
+    </div>
 
+  
       <h1>Statistics</h1>
-     
-      </div>
+    
+       <p>good {good}</p>
+       <p>neutral {neutral}</p>
+       <p>bad {bad}</p>  
+
+    </div>
   )
 }
 
-ReactDOM.render(<App />, 
-  document.getElementById('root')
-)
+ReactDOM.render(<App />,
+  document.getElementById('root'))
+  
