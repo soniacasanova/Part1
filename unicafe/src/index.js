@@ -5,19 +5,24 @@ const Statistics = ({good, neutral, bad}) => {
   let total = good + neutral + bad
   let average = (good+(bad*-1)/total)
   let positive= good/total
+  if ( total === 0) {
+    return (
+      <div>
+        No feedback needed
+      </div>
+    )
+  }
 
-return (
-
-  <div>
-
-    <p>total: {total}</p>
-    <p>average: {average}</p>
-    <p>positive: {positive}</p>
-    
-  </div>
-  
+  return (
+    <div>
+      <p>good: {good}</p>
+      <p>neutral {neutral}</p>
+      <p>bad {bad}</p>
+      <p>total: {total}</p>
+      <p>average: {average}</p>
+      <p>positive: {positive}</p>
+    </div>
   )
-
 }
 
 
@@ -54,9 +59,6 @@ const App = (props) => {
   
       <h1>Statistics</h1>
     
-       <p>good {good}</p>
-       <p>neutral {neutral}</p>
-       <p>bad {bad}</p>  
        <Statistics good = {good} bad = {bad} neutral = {neutral}/>
 
     </div>
