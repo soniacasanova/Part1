@@ -1,35 +1,48 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const Button = (props) => {
+const Button = ({ onClick, text }) => (
+  <button onClick={onClick}>
+    {text}
+  </button>
+)
+
+const Topvoted = ({anecdotes,votes}) => {
+  let i = votes.indexOf(Math.max(...votes));
   return (
-    <button onClick={props.handleClick}>{props.text}</button>
+    <div><p>{anecdotes[i]}</p>
+      <p>Has {votes[i]} votes</p></div>
   )
 }
-
-
 const App = (props) => {
   const [selected, setSelected] = useState(0)
-  const [value, setValue] = useState(0)
+  const arrayOfCeros=new Array(props.anecdotes.length).fill(0)
+  const [vote, setVote] = useState(arrayOfCeros)
 
-  const setToValue = (newValue) => {
-    setValue(newValue)
+  console.log("array vote:",vote);
+
+  const handleRandomClick = () => {
+    let newQuoate=Math.floor(Math.random()*props.anecdotes.length);
+    setSelected(newQuoate)
   }
-
+  const handleVoteClick = () => {
+    vote[selected]=vote[selected]+1
+    const copyVote = [ ...vote ]
+    setVote(copyVote)
+  }
 
   return (
     <div>
-      {props.anecdotes[selected]}
-      <br />
-      has {value} votes
-      <br />
-      <Button handleClick={() => setSelected(Math.floor(Math.random() * 6))} text="next anecdote" />
-      <Button handleClick={() => setToValue(value + 1)} text="vote" />
+      <p>{props.anecdotes[selected]}</p>
+      <p>Has {vote[selected]} votes</p>
+      <p>
+        <Button onClick={handleVoteClick} text='Vote'/>
+        <Button onClick={handleRandomClick} text='Random quote'/>
+      </p>
+      <Topvoted anecdotes={props.anecdotes} votes={vote}/>
     </div>
   )
 }
-
-
 
 const anecdotes = [
   'If it hurts, do it more often',
