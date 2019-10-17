@@ -33,12 +33,14 @@ const App = (props) => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{props.anecdotes[selected]}</p>
       <p>Has {vote[selected]} votes</p>
       <p>
         <Button onClick={handleVoteClick} text='Vote'/>
         <Button onClick={handleRandomClick} text='Random quote'/>
       </p>
+      <h1>Anecdote with most votes</h1>
       <Topvoted anecdotes={props.anecdotes} votes={vote}/>
     </div>
   )
