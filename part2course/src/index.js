@@ -22,9 +22,21 @@ return (
       <Part part={parts[0].name} exercises={parts[0].exercises} />
       <Part part={parts[1].name} exercises={parts[1].exercises} />
       <Part part={parts[2].name} exercises={parts[2].exercises} />
+      <Part part={parts[3].name} exercises={parts[3].exercises} />
     </div>
   )
 }
+const sumNbOfExercises = (parts) => { 
+ return parts[0].exercises + parts[1].exercises + parts[2].exercises + parts [3].exercises;
+  }
+const Total = ({parts}) => {
+    return (
+      <div>
+        <p>total of exercises {sumNbOfExercises(parts)}</p>
+      </div>
+    )
+  }
+
 
 const course = {
   name:'Half Stack application development',
@@ -43,7 +55,13 @@ const course = {
       name: 'State of a component',
       exercises: 14,
       id: 3
+    },
+    {
+    name: 'Redux',
+    exercises: 11,
+    id: 4
     }
+
   ]
 }
 
@@ -57,6 +75,7 @@ const App = (props) => {
       </h1>
       <p>
         <Content parts={course.parts} />
+        <Total parts={course.parts} />
       </p>
     </div>
   )
