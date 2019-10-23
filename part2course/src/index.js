@@ -1,28 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-const course = [
-  {
-    name: 'Fundamentals of React',
-    exercises: 10,
-    id: 1,
-  },
-  {
-    name: 'Using props to pass data',
-    exercises: 7,
-    id: 2,
-  },
-  {
-    name: 'State of a component',
-    exercises: 14,
-    id: 3,
+const Header = (props) => {
+  return (
+    <h1>
+      {props.name}
+    </h1>
+  );
+}
+const App = () => {
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10,
+        id: 1
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7,
+        id: 2
+      },
+      {
+        name: 'State of a component',
+        exercises: 14,
+        id: 3
+      }
+    ]
   }
-]
+
 
 const App = (props) => {
   const { course } = props
-}
 
 return (
   <div>
@@ -33,9 +43,12 @@ return (
   </div>
   )
 
+}
+
+
 
 
 ReactDOM.render(
   <App course={course} />,
   document.getElementById('root')
-)
+)}
